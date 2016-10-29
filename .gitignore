@@ -1,0 +1,4 @@
+#ignore ide files
+*.iws
+.idea/workspace.xml
+.idea/tasks.xml
