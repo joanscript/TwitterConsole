@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.mockito:mockito-core:2.1.0-RC.1" type="repository">
+    <properties maven-id="org.mockito:mockito-core:2.1.0-RC.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/test/lib/mockito-core-2.1.0-RC.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/test/lib/byte-buddy-1.4.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/test/lib/objenesis-2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
