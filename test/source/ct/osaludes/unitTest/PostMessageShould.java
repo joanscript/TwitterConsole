@@ -16,12 +16,12 @@ public class PostMessageShould {
     private PostMessage postMessage;
 
     @Before
-    public void initialize() {
+    public void setUp() {
         postMessage = new PostMessage(messageRepository);
     }
 
     @Test
-    public void postMessageToPersistance() {
+    public void saveMessage() {
         String alias = "john";
         String message = "blablbala";
         postMessage.post(alias, message);
