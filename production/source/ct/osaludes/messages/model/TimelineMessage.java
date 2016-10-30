@@ -11,6 +11,14 @@ public class TimelineMessage {
         this.date = date;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
