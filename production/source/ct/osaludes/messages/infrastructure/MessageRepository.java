@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MessageRepository {
-    private Map<String, List<TimelineMessage>> usersMessages = new HashMap<>();
+    private Map<String, List<TimelineMessage>> allMessages = new HashMap<>();
     private final Clock clock;
 
     public MessageRepository(Clock clock) {
@@ -17,13 +17,21 @@ public class MessageRepository {
 
     public void add(String alias, String message) {
         TimelineMessage timelineMessage = new TimelineMessage(message, clock.getDateTime());
-        List<TimelineMessage> userMessages = new ArrayList<>();
+        List<TimelineMessage> userMessages = getTimelineMessagesByAlias(alias);
         userMessages.add(timelineMessage);
-        usersMessages.put(alias, userMessages);
+        allMessages.put(alias, userMessages);
+    }
+
+    private List<TimelineMessage> getTimelineMessagesByAlias(String alias) {
+        List<TimelineMessage> userMessages = allMessages.get(alias);
+        if (userMessages == null) {
+            userMessages = new ArrayList<>();
+        }
+        return userMessages;
     }
 
     public List<TimelineMessage> findAllByAlias(String alias) {
-        return usersMessages.get(alias);
+        return allMessages.get(alias);
     }
 
     public List<TimelineMessage> findAllByAlias(List<String> followingUsers) {
