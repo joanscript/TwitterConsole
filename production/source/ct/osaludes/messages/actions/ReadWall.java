@@ -17,7 +17,8 @@ public class ReadWall {
     }
 
     public List<TimelineMessage> execute(String alias) {
-        HashSet<String> followingUsers = followingUsersRepository.findAllByAlias(alias);
-        return messageRepository.findAllByAlias(followingUsers);
+        HashSet<String> timelineUsers = followingUsersRepository.findAllByAlias(alias);
+        timelineUsers.add(alias);
+        return messageRepository.findAllByAlias(timelineUsers);
     }
 }
