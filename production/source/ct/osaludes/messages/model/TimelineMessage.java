@@ -19,6 +19,10 @@ public class TimelineMessage {
         return date;
     }
 
+    public String getAlias() {
+        return alias;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,6 +1,5 @@
 package ct.osaludes.unitTest;
 
-import ct.osaludes.messages.infrastructure.Clock;
 import ct.osaludes.messages.model.TimelineMessage;
 import ct.osaludes.messages.ui.Console;
 import ct.osaludes.messages.ui.FormatDateTime;
@@ -17,7 +16,6 @@ import java.util.List;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TimelinePrinterShould {
