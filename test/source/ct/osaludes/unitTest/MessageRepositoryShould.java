@@ -37,7 +37,7 @@ public class MessageRepositoryShould {
         List<TimelineMessage> timelineMessages = messageRepository.findAllByAlias(alias);
 
         assertThat(timelineMessages.size(), is(1));
-        assertThat(timelineMessages.get(0), is(timelineMessage(message, dateTime)));
+        assertThat(timelineMessages.get(0), is(timelineMessage(alias, message, dateTime)));
     }
 
     @Test
@@ -54,9 +54,9 @@ public class MessageRepositoryShould {
         List<TimelineMessage> timelineMessages = messageRepository.findAllByAlias(alias);
 
         assertThat(timelineMessages.size(), is(3));
-        assertThat(timelineMessages.get(0), is(timelineMessage(message1, dateTime)));
-        assertThat(timelineMessages.get(1), is(timelineMessage(message2, dateTime)));
-        assertThat(timelineMessages.get(2), is(timelineMessage(message3, dateTime)));
+        assertThat(timelineMessages.get(0), is(timelineMessage(alias, message1, dateTime)));
+        assertThat(timelineMessages.get(1), is(timelineMessage(alias, message2, dateTime)));
+        assertThat(timelineMessages.get(2), is(timelineMessage(alias, message3, dateTime)));
     }
 
     @Test
@@ -73,8 +73,8 @@ public class MessageRepositoryShould {
         assertThat(messageRepository.findAllByAlias(alias1).size(), is(1));
     }
 
-    private TimelineMessage timelineMessage(String message, String date) {
-        return new TimelineMessage(message, date);
+    private TimelineMessage timelineMessage(String alias, String message, String date) {
+        return new TimelineMessage(alias, message, date);
     }
 }
 

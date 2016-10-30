@@ -41,7 +41,7 @@ public class ReadWallShould {
         followingUsers.add(alias2);
         given(followingUsersRepository.findAllByAlias(alias)).willReturn(followingUsers);
 
-        List<TimelineMessage> timelineMessages = asList(new TimelineMessage("ww", "ww"));
+        List<TimelineMessage> timelineMessages = asList(new TimelineMessage(alias, "ww", "ww"));
         given(messageRepository.findAllByAlias(followingUsers)).willReturn(timelineMessages);
 
         List<TimelineMessage> actual = readWall.execute(alias);

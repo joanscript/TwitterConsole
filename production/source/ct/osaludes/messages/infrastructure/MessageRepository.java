@@ -13,7 +13,7 @@ public class MessageRepository {
     }
 
     public void add(String alias, String message) {
-        TimelineMessage timelineMessage = new TimelineMessage(message, clock.getDateTime());
+        TimelineMessage timelineMessage = new TimelineMessage(alias, message, clock.getDateTime());
         LinkedList<TimelineMessage> userMessages = getTimelineMessagesByAlias(alias);
         userMessages.add(timelineMessage);
         allMessages.put(alias, userMessages);

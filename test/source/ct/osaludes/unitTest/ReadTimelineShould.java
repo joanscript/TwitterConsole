@@ -29,7 +29,7 @@ public class ReadTimelineShould {
     @Test
     public void getAllMessagesFromTimelineUser() throws Exception {
         String alias = "john";
-        List<TimelineMessage> timelineMessages = asList(new TimelineMessage("ww", ""));
+        List<TimelineMessage> timelineMessages = asList(new TimelineMessage(alias, "ww", ""));
         given(messageRepository.findAllByAlias(alias)).willReturn(timelineMessages);
 
         List<TimelineMessage> actual = readTimeline.execute(alias);
