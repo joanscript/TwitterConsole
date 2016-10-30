@@ -9,10 +9,14 @@ import java.util.Map;
 
 public class MessageRepository {
     private Map<String, List<TimelineMessage>> usersMessages = new HashMap<>();
+    private final Clock clock;
+
+    public MessageRepository(Clock clock) {
+        this.clock = clock;
+    }
 
     public void add(String alias, String message) {
-        String date = "2001/1/1";
-        TimelineMessage timelineMessage = new TimelineMessage(message, date);
+        TimelineMessage timelineMessage = new TimelineMessage(message, clock.getDateTime());
         List<TimelineMessage> userMessages = new ArrayList<>();
         userMessages.add(timelineMessage);
         usersMessages.put(alias, userMessages);
