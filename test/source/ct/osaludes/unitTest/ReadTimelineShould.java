@@ -1,6 +1,7 @@
 package ct.osaludes.unitTest;
 
 import ct.osaludes.messages.actions.ReadTimeline;
+import ct.osaludes.messages.infrastructure.Clock;
 import ct.osaludes.messages.infrastructure.MessageRepository;
 import ct.osaludes.messages.model.TimelineMessage;
 import org.junit.Assert;
@@ -17,7 +18,7 @@ import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReadTimelineShould {
-    @Mock MessageRepository messageRepository = new MessageRepository();
+    @Mock MessageRepository messageRepository = new MessageRepository(new Clock());
     private ReadTimeline readTimeline;
 
     @Before
@@ -28,7 +29,7 @@ public class ReadTimelineShould {
     @Test
     public void getAllMessagesFromTimelineUser() throws Exception {
         String alias = "john";
-        List<TimelineMessage> timelineMessages = asList(new TimelineMessage());
+        List<TimelineMessage> timelineMessages = asList(new TimelineMessage("ww", ""));
         given(messageRepository.findAllByAlias(alias)).willReturn(timelineMessages);
 
         List<TimelineMessage> actual = readTimeline.execute(alias);
