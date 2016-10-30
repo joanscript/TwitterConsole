@@ -3,7 +3,6 @@ package ct.osaludes.unitTest;
 import ct.osaludes.messages.infrastructure.Clock;
 import ct.osaludes.messages.infrastructure.MessageRepository;
 import ct.osaludes.messages.model.TimelineMessage;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,16 +43,20 @@ public class MessageRepositoryShould {
     @Test
     public void createUserAndStoreSeveralMessages() throws Exception {
         String alias = "john";
-        String message = "blablbal";
+        String message1 = "blablbal1";
+        String message2 = "blablbal2";
+        String message3 = "blablbal3";
         given(clock.getDateTime()).willReturn(dateTime);
-        messageRepository.add(alias, message);
-        messageRepository.add(alias, message);
-        messageRepository.add(alias, message);
+        messageRepository.add(alias, message1);
+        messageRepository.add(alias, message2);
+        messageRepository.add(alias, message3);
 
         List<TimelineMessage> timelineMessages = messageRepository.findAllByAlias(alias);
 
         assertThat(timelineMessages.size(), is(3));
-        assertThat(timelineMessages.get(0), is(timelineMessage(message, dateTime)));
+        assertThat(timelineMessages.get(0), is(timelineMessage(message1, dateTime)));
+        assertThat(timelineMessages.get(1), is(timelineMessage(message2, dateTime)));
+        assertThat(timelineMessages.get(2), is(timelineMessage(message3, dateTime)));
     }
 
     @Test
