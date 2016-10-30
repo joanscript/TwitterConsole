@@ -23,7 +23,7 @@ public class MessageRepository {
         return allMessages.get(alias);
     }
 
-    public List<TimelineMessage> findAllByAlias(List<String> followingUsers) {
+    public List<TimelineMessage> findAllByAlias(HashSet<String> followingUsers) {
         throw new RuntimeException("not implemented");
     }
 

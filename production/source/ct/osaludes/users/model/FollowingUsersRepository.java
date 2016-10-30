@@ -1,14 +1,26 @@
 package ct.osaludes.users.model;
 
-import java.util.List;
+import java.util.*;
 
 public class FollowingUsersRepository {
 
-    public void addFollowingUser(String alias, String followingAlias) {
+    private Map<String, LinkedHashSet<String>> followingUsers = new HashMap<>();
 
+    public void addFollowingUser(String alias, String followingAlias) {
+        LinkedHashSet<String> following = getAliasFollowingUsers(alias);
+        following.add(followingAlias);
+        followingUsers.put(alias, following);
     }
 
-    public List<String> findAllByAlias(String alias) {
-        throw new RuntimeException("not implemented");
+    public HashSet<String> findAllByAlias(String alias) {
+        return followingUsers.get(alias);
+    }
+
+    private LinkedHashSet<String> getAliasFollowingUsers(String alias) {
+        LinkedHashSet<String> following = followingUsers.get(alias);
+        if (following == null) {
+            following = new LinkedHashSet<>();
+        }
+        return following;
     }
 }

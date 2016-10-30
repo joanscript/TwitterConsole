@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -36,7 +36,7 @@ public class ReadWallShould {
 
         String alias1 = "maria";
         String alias2 = "andrea";
-        List<String> followingUsers = new ArrayList<>();
+        LinkedHashSet<String> followingUsers = new LinkedHashSet<>();
         followingUsers.add(alias1);
         followingUsers.add(alias2);
         given(followingUsersRepository.findAllByAlias(alias)).willReturn(followingUsers);
