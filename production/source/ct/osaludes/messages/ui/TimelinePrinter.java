@@ -1,9 +1,7 @@
 package ct.osaludes.messages.ui;
 
-import ct.osaludes.messages.infrastructure.Clock;
 import ct.osaludes.messages.model.TimelineMessage;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
