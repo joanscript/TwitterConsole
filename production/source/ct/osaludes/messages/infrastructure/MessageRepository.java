@@ -24,7 +24,11 @@ public class MessageRepository {
     }
 
     public List<TimelineMessage> findAllByAlias(HashSet<String> followingUsers) {
-        throw new RuntimeException("not implemented");
+        List<TimelineMessage> total = new LinkedList<>();
+        for (String followingUser: followingUsers) {
+            total.addAll(findAllByAlias(followingUser));
+        }
+        return total;
     }
 
     private LinkedList<TimelineMessage> getTimelineMessagesByAlias(String alias) {

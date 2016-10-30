@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -71,6 +72,29 @@ public class MessageRepositoryShould {
 
         assertThat(messageRepository.findAllByAlias(alias).size(), is(2));
         assertThat(messageRepository.findAllByAlias(alias1).size(), is(1));
+    }
+
+    @Test
+    public void geMessagesGivenSeveralUsers() throws Exception {
+        String alias1 = "john";
+        String alias2 = "maria";
+        String message1 = "blablbal1";
+        String message2 = "blablbal2";
+        String message3 = "blablbal3";
+        given(clock.getDateTime()).willReturn(dateTime);
+        messageRepository.add(alias1, message1);
+        messageRepository.add(alias2, message2);
+        messageRepository.add(alias1, message3);
+
+        LinkedHashSet<String> alias = new LinkedHashSet<>();
+        alias.add(alias1);
+        alias.add(alias2);
+        List<TimelineMessage> timelineMessages = messageRepository.findAllByAlias(alias);
+
+        assertThat(timelineMessages.size(), is(3));
+        assertThat(timelineMessages.get(0), is(timelineMessage(alias1, message1, dateTime)));
+        assertThat(timelineMessages.get(1), is(timelineMessage(alias1, message3, dateTime)));
+        assertThat(timelineMessages.get(2), is(timelineMessage(alias2, message2, dateTime)));
     }
 
     private TimelineMessage timelineMessage(String alias, String message, String date) {
