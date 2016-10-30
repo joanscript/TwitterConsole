@@ -12,4 +12,8 @@ public class MessageRepository {
     public List<TimelineMessage> findAllByAlias(String alias) {
         throw new RuntimeException("not implemented");
     }
+
+    public List<TimelineMessage> findAllByAlias(List<String> followingUsers) {
+        throw new RuntimeException("not implemented");
+    }
 }

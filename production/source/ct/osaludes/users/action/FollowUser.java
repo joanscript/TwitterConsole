@@ -1,15 +1,15 @@
 package ct.osaludes.users.action;
 
-import ct.osaludes.users.model.FollowersRepository;
+import ct.osaludes.users.model.FollowingUsersRepository;
 
 public class FollowUser {
-    private FollowersRepository followersRepository;
+    private FollowingUsersRepository followingUsersRepository;
 
-    public FollowUser(FollowersRepository followersRepository) {
-        this.followersRepository = followersRepository;
+    public FollowUser(FollowingUsersRepository followingUsersRepository) {
+        this.followingUsersRepository = followingUsersRepository;
     }
 
     public void execute(String alias, String followingAlias) {
-        followersRepository.addFollowingUser(alias, followingAlias);
+        followingUsersRepository.addFollowingUser(alias, followingAlias);
     }
 }

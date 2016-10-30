@@ -14,7 +14,6 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReadTimelineShould {
