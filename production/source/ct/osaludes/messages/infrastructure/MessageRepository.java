@@ -22,19 +22,19 @@ public class MessageRepository {
         allMessages.put(alias, userMessages);
     }
 
-    private List<TimelineMessage> getTimelineMessagesByAlias(String alias) {
-        List<TimelineMessage> userMessages = allMessages.get(alias);
-        if (userMessages == null) {
-            userMessages = new ArrayList<>();
-        }
-        return userMessages;
-    }
-
     public List<TimelineMessage> findAllByAlias(String alias) {
         return allMessages.get(alias);
     }
 
     public List<TimelineMessage> findAllByAlias(List<String> followingUsers) {
         throw new RuntimeException("not implemented");
+    }
+
+    private List<TimelineMessage> getTimelineMessagesByAlias(String alias) {
+        List<TimelineMessage> userMessages = allMessages.get(alias);
+        if (userMessages == null) {
+            userMessages = new ArrayList<>();
+        }
+        return userMessages;
     }
 }
