@@ -5,11 +5,19 @@ import ct.osaludes.messages.model.TimelineMessage;
 import java.util.*;
 
 public class MessageRepository {
+    private static MessageRepository instance = null;
     private Map<String, LinkedList<TimelineMessage>> allMessages = new LinkedHashMap<>();
     private final Clock clock;
 
     public MessageRepository(Clock clock) {
         this.clock = clock;
+    }
+
+    public static MessageRepository getInstance(Clock clock) {
+        if (instance == null) {
+            instance = new MessageRepository(clock);
+        }
+        return instance;
     }
 
     public void add(String alias, String message) {

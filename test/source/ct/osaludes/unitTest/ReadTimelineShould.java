@@ -18,7 +18,7 @@ import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReadTimelineShould {
-    @Mock MessageRepository messageRepository = new MessageRepository(new Clock());
+    @Mock MessageRepository messageRepository = MessageRepository.getInstance(new Clock());
     private ReadTimeline readTimeline;
 
     @Before
