@@ -3,8 +3,16 @@ package ct.osaludes.users.model;
 import java.util.*;
 
 public class FollowingUsersRepository {
+    private static FollowingUsersRepository instance = null;
 
     private Map<String, LinkedHashSet<String>> followingUsers = new HashMap<>();
+
+    public static FollowingUsersRepository getInstance() {
+        if (instance == null) {
+            instance = new FollowingUsersRepository();
+        }
+        return instance;
+    }
 
     public void addFollowingUser(String alias, String followingAlias) {
         LinkedHashSet<String> following = getAliasFollowingUsers(alias);
