@@ -38,7 +38,7 @@ public class PostAndReadTimelineFeature {
         TimelinePrinter timelinePrinter = new TimelinePrinter(console, new FormatDateTime(clock));
         timelinePrinter.print(timelineMessages);
 
-        verify(console).print("hello world 2016/10/30 17:00:00");
+        verify(console).print("hello world (less than 1 minute ago)");
 
     }
 }
