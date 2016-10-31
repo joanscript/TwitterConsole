@@ -1,7 +1,7 @@
 package ct.osaludes.unitTest;
 
 import ct.osaludes.messages.model.TimelineMessage;
-import ct.osaludes.messages.ui.Console;
+import ct.osaludes.messages.infrastructure.Console;
 import ct.osaludes.messages.ui.FormatDateTime;
 import ct.osaludes.messages.ui.TimelinePrinter;
 import org.junit.Before;

@@ -1,5 +1,6 @@
 package ct.osaludes.messages.ui;
 
+import ct.osaludes.messages.infrastructure.Console;
 import ct.osaludes.messages.model.TimelineMessage;
 
 public class TimelinePrinter extends Printer {
