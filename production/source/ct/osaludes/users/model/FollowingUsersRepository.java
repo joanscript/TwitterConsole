@@ -12,8 +12,8 @@ public class FollowingUsersRepository {
         followingUsers.put(alias, following);
     }
 
-    public HashSet<String> findAllByAlias(String alias) {
-        return followingUsers.get(alias);
+    public LinkedHashSet<String> findAllByAlias(String alias) {
+        return getAliasFollowingUsers(alias);
     }
 
     private LinkedHashSet<String> getAliasFollowingUsers(String alias) {
