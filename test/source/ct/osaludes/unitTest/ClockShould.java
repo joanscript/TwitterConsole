@@ -14,7 +14,7 @@ public class ClockShould {
 
     @Before
     public void setUp() throws Exception {
-        clock = new TestClock("2016/07/07 12:12:12");
+        clock = new TestClock();
     }
 
     @Test
@@ -25,21 +25,13 @@ public class ClockShould {
     }
 
     private class TestClock extends Clock {
-        private String stringDate;
-
-        TestClock(String stringDate) {
-            this.stringDate = stringDate;
-        }
-
         protected Date getDate() {
-            Date date = null;
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-                date = simpleDateFormat.parse(stringDate);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(YYYY_MM_DD_HH_MM_SS);
+                return simpleDateFormat.parse("2016/07/07 12:12:12");
             } catch (ParseException e) {
-                e.printStackTrace();
+                return new Date();
             }
-            return date;
         }
     }
 }
