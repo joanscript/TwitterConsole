@@ -23,8 +23,8 @@ public class FormatDateTimeShould {
 
     @Test
     public void returnOneMinuteAgo() throws Exception {
-        String datetime = "2016/10/30 17:00:00";
-        given(clock.getDateTime()).willReturn("2016/10/30 16:59:00");
+        String datetime = "2016/10/30 16:59:00";
+        given(clock.getDateTime()).willReturn("2016/10/30 17:00:00");
 
         String dateFormatted = formatDateTime.format(datetime);
 
@@ -34,17 +34,17 @@ public class FormatDateTimeShould {
     @Test
     public void returnLessThanOneMinuteAgo() throws Exception {
         String datetime = "2016/10/30 17:00:00";
-        given(clock.getDateTime()).willReturn("2016/10/30 16:59:30");
+        given(clock.getDateTime()).willReturn("2016/10/30 17:01:30");
 
         String dateFormatted = formatDateTime.format(datetime);
 
-        Assert.assertEquals("(less than 1 minute ago)", dateFormatted);
+        Assert.assertEquals("(1 minute ago)", dateFormatted);
     }
 
     @Test
     public void returnMoreThanOneMinuteAgo() throws Exception {
-        String datetime = "2016/10/30 17:00:00";
-        given(clock.getDateTime()).willReturn("2016/10/30 16:50:30");
+        String datetime = "2016/10/30 16:50:30";
+        given(clock.getDateTime()).willReturn("2016/10/30 17:00:00");
 
         String dateFormatted = formatDateTime.format(datetime);
 

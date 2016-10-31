@@ -32,7 +32,7 @@ public class FormatDateTime {
     }
 
     private long getMinutesDifference(long now, long millis) {
-        long diffInMillis = millis - now;
+        long diffInMillis = now - millis;
         return TimeUnit.MINUTES.convert(diffInMillis, TimeUnit.MILLISECONDS);
     }
 
