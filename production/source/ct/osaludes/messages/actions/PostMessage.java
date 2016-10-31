@@ -10,7 +10,7 @@ public class PostMessage {
         this.messageRepository = messageRepository;
     }
 
-    public void post(String alias, String message) {
+    public void execute(String alias, String message) {
         messageRepository.add(alias, message);
     }
 }

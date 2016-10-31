@@ -24,7 +24,7 @@ public class PostMessageShould {
     public void saveMessage() {
         String alias = "john";
         String message = "blablbala";
-        postMessage.post(alias, message);
+        postMessage.execute(alias, message);
 
         verify(messageRepository).add(alias, message);
     }

@@ -38,7 +38,7 @@ public class PostAndReadTimelineFeature {
         PostMessage postMessage = new PostMessage(messageRepository);
         String alias = "john";
         String message = "hello world";
-        postMessage.post(alias, message);
+        postMessage.execute(alias, message);
         ReadTimeline readTimeline = new ReadTimeline(messageRepository);
         List<TimelineMessage> timelineMessages = readTimeline.execute(alias);
 
@@ -58,8 +58,8 @@ public class PostAndReadTimelineFeature {
         String message = "hello world";
         String alias2 = "maria";
         String message2 = "my first message";
-        postMessage.post(alias, message);
-        postMessage.post(alias2, message2);
+        postMessage.execute(alias, message);
+        postMessage.execute(alias2, message2);
 
         FollowingUsersRepository followingUsersRepository = new FollowingUsersRepository();
         FollowUser followUser = new FollowUser(followingUsersRepository);
@@ -84,7 +84,7 @@ public class PostAndReadTimelineFeature {
         PostMessage postMessage = new PostMessage(messageRepository);
         String alias = "john";
         String message = "hello world";
-        String jj = postMessage.post(alias, message);
+        postMessage.execute(alias, message);
 
         ReadWall readWall = new ReadWall(messageRepository, new FollowingUsersRepository());
         List<TimelineMessage> wallMessages = readWall.execute(alias);
