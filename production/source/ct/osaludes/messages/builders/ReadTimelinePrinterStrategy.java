@@ -1,7 +1,6 @@
 package ct.osaludes.messages.builders;
 
 import ct.osaludes.messages.actions.ReadTimeline;
-import ct.osaludes.messages.builders.ProcessStrategy;
 import ct.osaludes.messages.infrastructure.Clock;
 import ct.osaludes.messages.infrastructure.Console;
 import ct.osaludes.messages.infrastructure.MessageRepository;

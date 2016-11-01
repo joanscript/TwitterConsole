@@ -1,9 +1,5 @@
 package ct.osaludes.messages.builders;
 
-import ct.osaludes.messages.builders.FollowUserStrategy;
-import ct.osaludes.messages.builders.ProcessStrategy;
-import ct.osaludes.messages.builders.ReadTimelinePrinterStrategy;
-import ct.osaludes.messages.builders.ReadWallPrinterStrategy;
 import ct.osaludes.users.builders.PostMessageStrategy;
 
 import java.util.Collections;
