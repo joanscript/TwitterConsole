@@ -31,25 +31,34 @@ public class WallPrinterShould {
     @Test
     public void shouldPrintMessagesInReversedOrder() throws Exception {
         String alias = "maria";
-        String message = "no no";
-        String date = "2016/10/30 17:05";
-        String alias2 = "john";
-        String message2 = "blablabl";
-        String date2 = "2016/10/30 17:00";
-        TimelineMessage timelineMessage = getTimelineMessage(alias, message, date);
-        TimelineMessage timelineMessage2 = getTimelineMessage(alias2, message2, date2);
-        List<TimelineMessage> timelineMessages = new LinkedList<>();
-        timelineMessages.add(timelineMessage2);
-        timelineMessages.add(timelineMessage);
+        String message2 = "no no";
+        String date2 = "2016/10/30 17:05";
 
-        given(formatDateTime.format(date2)).willReturn("(2 minutes ago)");
-        given(formatDateTime.format(date)).willReturn("(5 minutes ago)");
+        String alias2 = "john";
+        String message1 = "blablabl";
+        String date1 = "2016/10/30 17:00";
+
+        String message3 = "my last message";
+        String date3 = "2016/10/30 17:08";
+
+        TimelineMessage timelineMessage1 = getTimelineMessage(alias2, message1, date1);
+        TimelineMessage timelineMessage2 = getTimelineMessage(alias, message2, date2);
+        TimelineMessage timelineMessage3 = getTimelineMessage(alias2, message3, date3);
+        List<TimelineMessage> timelineMessages = new LinkedList<>();
+        timelineMessages.add(timelineMessage1);
+        timelineMessages.add(timelineMessage2);
+        timelineMessages.add(timelineMessage3);
+
+        given(formatDateTime.format(date1)).willReturn("(10 minutes ago)");
+        given(formatDateTime.format(date2)).willReturn("(5 minutes ago)");
+        given(formatDateTime.format(date3)).willReturn("(2 minutes ago)");
 
         wallPrinter.print(timelineMessages);
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).print("john - blablabl (2 minutes ago)");
+        inOrder.verify(console).print("john - my last message (2 minutes ago)");
         inOrder.verify(console).print("maria - no no (5 minutes ago)");
+        inOrder.verify(console).print("john - blablabl (10 minutes ago)");
     }
 
     private TimelineMessage getTimelineMessage(String alias, String message, String date) {
