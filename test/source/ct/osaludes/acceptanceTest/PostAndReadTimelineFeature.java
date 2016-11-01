@@ -72,7 +72,7 @@ public class PostAndReadTimelineFeature {
         wallPrinter.print(wallMessages);
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).print("maria - my first message (2 minutes ago)");
+        inOrder.verify(console).print("maria - my first message (3 minutes ago)");
         inOrder.verify(console).print("john - hello world (5 minutes ago)");
     }
 

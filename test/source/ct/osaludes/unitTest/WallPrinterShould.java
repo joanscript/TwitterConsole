@@ -39,11 +39,11 @@ public class WallPrinterShould {
         TimelineMessage timelineMessage = getTimelineMessage(alias, message, date);
         TimelineMessage timelineMessage2 = getTimelineMessage(alias2, message2, date2);
         List<TimelineMessage> timelineMessages = new LinkedList<>();
-        timelineMessages.add(timelineMessage);
         timelineMessages.add(timelineMessage2);
+        timelineMessages.add(timelineMessage);
 
-        given(formatDateTime.format(date)).willReturn("(5 minutes ago)");
         given(formatDateTime.format(date2)).willReturn("(2 minutes ago)");
+        given(formatDateTime.format(date)).willReturn("(5 minutes ago)");
 
         wallPrinter.print(timelineMessages);
 

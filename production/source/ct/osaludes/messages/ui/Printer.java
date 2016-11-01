@@ -18,10 +18,11 @@ public abstract class Printer {
     }
 
     public void print(List<TimelineMessage> timelineMessages) {
+
+        timelineMessages.sort((o1, o2) -> o2.getDate().compareTo(o1.getDate()));
         Iterator<String> iterator = timelineMessages.stream()
                 .map(timelineMessage -> getDateTimeFormat(timelineMessage, formatDateTime))
-                .collect(Collectors.toCollection(LinkedList::new))
-                .descendingIterator();
+                .collect(Collectors.toCollection(LinkedList::new)).iterator();
         while(iterator.hasNext()) {
             console.print(iterator.next());
         }
