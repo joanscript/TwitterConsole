@@ -31,24 +31,24 @@ public class TimelinePrinterShould {
     @Test
     public void shouldPrintMessagesInReversedOrder() throws Exception {
         String alias = "john";
-        String message = "no no";
-        String date = "2016/10/30 17:05";
-        String message2 = "blablabl";
-        String date2 = "2016/10/30 17:00";
-        TimelineMessage timelineMessage = getTimelineMessage(alias, message, date);
-        TimelineMessage timelineMessage2 = getTimelineMessage(alias, message2, date2);
+        String firstMessage = "blablabl";
+        String firstDate = "2016/10/30 17:00";
+        String secondMessage = "no no";
+        String secondDate = "2016/10/30 17:05";
+        TimelineMessage firstTimelineMessage = getTimelineMessage(alias, firstMessage, firstDate);
+        TimelineMessage secondTimelineMessage = getTimelineMessage(alias, secondMessage, secondDate);
         List<TimelineMessage> timelineMessages = new LinkedList<>();
-        timelineMessages.add(timelineMessage);
-        timelineMessages.add(timelineMessage2);
+        timelineMessages.add(firstTimelineMessage);
+        timelineMessages.add(secondTimelineMessage);
 
-        given(formatDateTime.format(date)).willReturn("(5 minutes ago)");
-        given(formatDateTime.format(date2)).willReturn("(2 minutes ago)");
+        given(formatDateTime.format(firstDate)).willReturn("(5 minutes ago)");
+        given(formatDateTime.format(secondDate)).willReturn("(2 minutes ago)");
 
         timelinePrinter.print(timelineMessages);
 
         InOrder inOrder = inOrder(console);
-        inOrder.verify(console).print("blablabl (2 minutes ago)");
-        inOrder.verify(console).print("no no (5 minutes ago)");
+        inOrder.verify(console).print("no no (2 minutes ago)");
+        inOrder.verify(console).print("blablabl (5 minutes ago)");
     }
 
     private TimelineMessage getTimelineMessage(String alias, String message, String date) {
