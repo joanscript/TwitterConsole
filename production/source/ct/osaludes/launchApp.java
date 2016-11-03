@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 public class launchApp {
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to TwitterConsole. Enter your command:");
+        System.out.println("Post message: alias -> message");
+        System.out.println("Read timeline: alias");
+        System.out.println("Read wall: alias wall");
+        System.out.println("Follow user: alias follows alias2");
+        System.out.println("Finish: exit");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String command = br.readLine();
         while (!command.equals("exit")) {
