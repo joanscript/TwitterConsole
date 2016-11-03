@@ -34,7 +34,7 @@ public class PostAndReadTimelineFeature {
     public void printAllMessagesPostByAUser() throws Exception {
         when(clock.getDateTime()).thenReturn("2016/10/30 17:00:00", "2016/10/30 17:03:00");
 
-        MessageRepository messageRepository = MessageRepository.getInstance(clock);
+        MessageRepository messageRepository = new MessageRepository(clock);
         PostMessage postMessage = new PostMessage(messageRepository);
         String alias = "john";
         String message = "hello world";
@@ -52,7 +52,7 @@ public class PostAndReadTimelineFeature {
     public void printWallByAUser() throws Exception {
         when(clock.getDateTime()).thenReturn("2016/10/30 17:00:00", "2016/10/30 17:02:00", "2016/10/30 17:05:00", "2016/10/30 17:05:01");
 
-        MessageRepository messageRepository = MessageRepository.getInstance(clock);
+        MessageRepository messageRepository = new MessageRepository(clock);
         PostMessage postMessage = new PostMessage(messageRepository);
         String alias = "john";
         String message = "hello world";
@@ -80,7 +80,7 @@ public class PostAndReadTimelineFeature {
     public void followUserAndPrintWallByAUser() throws Exception {
         given(clock.getDateTime()).willReturn("2016/10/30 17:00:00");
 
-        MessageRepository messageRepository = MessageRepository.getInstance(clock);
+        MessageRepository messageRepository = new MessageRepository(clock);
         PostMessage postMessage = new PostMessage(messageRepository);
         String alias = "john";
         String message = "hello world";
